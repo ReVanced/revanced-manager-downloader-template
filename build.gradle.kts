@@ -35,23 +35,23 @@ android {
 
     buildTypes {
         release {
-            if ("CI" in System.getenv()) {
-                signingConfig = signingConfigs.create("release") {
-                    storeFile = file("keystore.jks")
-                    storePassword = System.getenv("KEYSTORE_PASSWORD")
-                    keyAlias = System.getenv("KEYSTORE_ENTRY_ALIAS")
-                    keyPassword = System.getenv("KEYSTORE_ENTRY_PASSWORD")
-                }
-            }
-
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
-        }
 
-        debug {
-            signingConfig = signingConfigs.getByName("debug")
+            val keystoreFile = file("keystore.jks")
+            signingConfig =
+                if (keystoreFile.exists()) {
+                    signingConfigs.create("release") {
+                        storeFile = keystoreFile
+                        storePassword = System.getenv("KEYSTORE_PASSWORD")
+                        keyAlias = System.getenv("KEYSTORE_ENTRY_ALIAS")
+                        keyPassword = System.getenv("KEYSTORE_ENTRY_PASSWORD")
+                    }
+                } else {
+                    signingConfigs["debug"]
+                }
         }
     }
 
