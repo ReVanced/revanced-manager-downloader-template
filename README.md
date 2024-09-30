@@ -79,18 +79,15 @@ To start using this template, follow these steps:
 2. Set up the [build.gradle.kts](build.gradle.kts) file (Specifically, the [package nme](build.gradle.kts#L21).
 3. Update dependencies in the [libs.versions.toml](gradle/libs.versions.toml) file
 4. [Create a pass-phrased GPG master key and subkey](https://mikeross.xyz/create-gpg-key-pair-with-subkeys/)
-   1. Add the private key as a secret named [GPG_PRIVATE_KEY](.github/workflows/release.yml#L49) to your repository
-   2. Add the passphrase as a secret named [GPG_PASSPHRASE](.github/workflows/release.yml#L50) to your repository
-   3. Add the fingerprint of the GPG subkey as a secret named [GPG_FINGERPRINT](.github/workflows/release.yml#L51)
+   1. Add the private key as a secret named [GPG_PRIVATE_KEY](.github/workflows/release.yml#L51) to your repository
+   2. Add the passphrase as a secret named [GPG_PASSPHRASE](.github/workflows/release.yml#L52) to your repository
+   3. Add the fingerprint of the GPG subkey as a secret named [GPG_FINGERPRINT](.github/workflows/release.yml#L53)
    to your repository
 5. [Generate a keystore](https://developer.android.com/studio/publish/app-signing#generate-key)
-   1. Add the Base64 encoded key store as a secret named [KEYSTORE](.github/workflows/release.yml#L55) to your repository
-   2. Add the keystore password as a secret named [KEYSTORE_PASSWORD](.github/workflows/release.yml#L60) to your repository
-   3. Add the keystore entry alias as a secret named [KEYSTORE_ENTRY_ALIAS](.github/workflows/release.yml#L61) to your repository
-   4. Add the keystore entry password as a secret named [KEYSTORE_ENTRY_PASSWORD](.github/workflows/release.yml#L62) to your repository
-6. [Create a PAT](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
-with [push access](https://github.com/semantic-release/semantic-release/blob/master/docs/usage/ci-configuration.md#authentication)
-   1. Add it as a secret named [REPOSITORY_PUSH_ACCESS](.github/workflows/release.yml#L59) to your repository
+   1. Add the Base64 encoded key store as a secret named [KEYSTORE](.github/workflows/release.yml#L57) to your repository
+   2. Add the keystore password as a secret named [KEYSTORE_PASSWORD](.github/workflows/release.yml#L62) to your repository
+   3. Add the keystore entry alias as a secret named [KEYSTORE_ENTRY_ALIAS](.github/workflows/release.yml#L63) to your repository
+   4. Add the keystore entry password as a secret named [KEYSTORE_ENTRY_PASSWORD](.github/workflows/release.yml#L64) to your repository
 7. Set up the [README.md](README.md) file[^1] (e.g, title, description, license, summary),
 the [issue templates](.github/ISSUE_TEMPLATE)[^2] and the [contribution guidelines](CONTRIBUTING.md)[^3]
 
