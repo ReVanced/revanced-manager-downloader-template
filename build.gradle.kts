@@ -1,36 +1,26 @@
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.parcelize)
     publishing
     signing
 }
 
 dependencies {
-    implementation(libs.compose.activity)
-    implementation(platform(libs.compose.bom))
-    implementation(libs.compose.material3)
-    implementation(libs.compose.ui)
-    implementation(libs.compose.ui.tooling)
-
-    compileOnly(project(":downloader-plugin"))
+    compileOnly(libs.plugin.api)
 }
 
 android {
     val packageName = "app.revanced.manager.plugin.downloader.example"
 
     namespace = packageName
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = packageName
         minSdk = 26
-        targetSdk = 34
+        targetSdk = 35
         versionName = version.toString()
         versionCode = versionName!!.filter { it.isDigit() }.toInt()
-
-        buildConfigField("String", "PLUGIN_PACKAGE_NAME", "\"$packageName\"")
     }
 
     buildTypes {
@@ -62,11 +52,6 @@ android {
 
     kotlinOptions {
         jvmTarget = "17"
-    }
-
-    buildFeatures {
-        compose = true
-        buildConfig = true
     }
 
     applicationVariants.all {

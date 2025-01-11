@@ -63,13 +63,11 @@
 ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/ReVanced/revanced-manager-downloader-template/release.yml)
 ![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)
 
-Template repository for ReVanced Manager downloader.
+Template repository for ReVanced Manager downloader plugins.
 
 ## ❓ About
 
-This is a template to create a new ReVanced Manager downloader repository.  
-
-For an example repository, see [TODO](https://github.com/revanced/revanced-manager).
+This is a template to create a new ReVanced Manager downloader repository. An example implementation is included.
 
 ##  🚀 Get started
 
@@ -108,7 +106,7 @@ To develop and release ReVanced Manager downloader using this template, some thi
 - Commits on the `dev` branch and `main` branch are automatically released
 via the [release.yml](.github/workflows/release.yml) workflow, which is also responsible for generating the changelog
 and updating the version of ReVanced Manager downloader. It is triggered by pushing to the `dev` or `main` branch.
-The workflow uses the `publish` task to publish the release of ReVanced Patches
+The workflow uses the `publish` task to publish the release.
 - The `publish` task depends on the `assembleRelease` task, so it will be run automatically when publishing a release.
 
 ## 📚 Everything else
@@ -125,6 +123,17 @@ Follow the steps below to build ReVanced Manager downloader template:
 
 1. Run `git clone git@github.com:ReVanced/revanced-manager-downloader-template.git` to clone the repository
 2. Run `gradlew assembleRelease` to build the project
+
+> [!NOTE]
+> If the build fails due to authentication, you may need to authenticate to GitHub Packages.
+> Create a PAT with the scope `read:packages` [here](https://github.com/settings/tokens/new?scopes=read:packages&description=ReVanced) and add your token to ~/.gradle/gradle.properties.
+>
+> Example `gradle.properties` file:
+>
+> ```properties
+> gpr.user = user
+> gpr.key = key
+> ```
 
 ## 📜 Licence
 
