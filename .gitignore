@@ -124,3 +124,7 @@ node_modules/
 
 # Ignore IDEA files
 .idea/
+
+.kotlin/
+
+local.properties
