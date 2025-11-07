@@ -135,7 +135,7 @@ Follow the steps below to build ReVanced Manager downloader template:
 > gpr.key = key
 > ```
 
-## 📜 Licence
+## 📜 License
 
 ReVanced Manager downloader template is licensed under the GPLv3 licence.
 Please see the [license file](LICENSE) for more information.
