@@ -137,7 +137,7 @@ Follow the steps below to build ReVanced Manager downloader template:
 
 ## 📜 License
 
-ReVanced Manager downloader template is licensed under the GPLv3 licence.
+ReVanced Manager downloader template is licensed under the GPLv3 license.
 Please see the [license file](LICENSE) for more information.
 [tl;dr](https://www.tldrlegal.com/license/gnu-general-public-license-v3-gpl-3) you may copy, distribute
 and modify ReVanced Manager downloader template as long as you track changes/dates in source files.
