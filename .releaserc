@@ -21,10 +21,10 @@
       "@semantic-release/git",
       {
         "assets": [
-          "README.md",
           "CHANGELOG.md",
           "gradle.properties",
-        ]
+        ],
+        "message": "chore: Release v${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
       }
     ],
     [
@@ -32,7 +32,7 @@
       {
         "assets": [
           {
-            "path": "build\outputs\apk\release\*.apk",
+            "path": "build/outputs/apk/release/*.apk?(.asc)",
           }
         ],
         successComment: false
