@@ -11,16 +11,13 @@ jobs:
   release:
     name: Release
     permissions:
+      id-token: write
       contents: write
+      attestations: write
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          # Make sure the release step uses its own credentials:
-          # https://github.com/cycjimmy/semantic-release-action#private-packages
-          persist-credentials: false
-          fetch-depth: 0
 
       - name: Setup Java
         uses: actions/setup-java@v4
@@ -56,11 +53,18 @@ jobs:
         run: |
           echo "${{ secrets.KEYSTORE }}" | base64 --decode > "keystore.jks"}
 
-      - name: Release
+      - name: Semantic Release
+        uses: cycjimmy/semantic-release-action@v4
+        id: release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEYSTORE_ENTRY_ALIAS: ${{ secrets.KEYSTORE_ENTRY_ALIAS }}
           KEYSTORE_ENTRY_PASSWORD: ${{ secrets.KEYSTORE_ENTRY_PASSWORD }}
-        run: |
-          npx semantic-release
+          
+      - name: Attest
+        if: steps.release.outputs.new_release_published == 'true'
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-name: 'Downloader ${{ steps.release.outputs.new_release_git_tag }}'
+          subject-path: build/outputs/apk/release/*.apk
